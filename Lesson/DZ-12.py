@@ -8,4 +8,3 @@ one = str('#')
 text = (one + text)
 text = text[:140]
 print(text)
-
