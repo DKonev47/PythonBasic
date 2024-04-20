@@ -16,7 +16,7 @@ class Student(Human):
         super().__init__(gender, age, first_name, last_name)
         self.record_book = record_book
     def __str__(self):
-        return f'{super()} {self.record_book}'
+        return f'{self.last_name} {self.record_book}'
 
 
 class Group:
@@ -29,9 +29,8 @@ class Group:
         self.group.add(student)
 
     def delete_student(self, last_name):
-        for i in tuple(self.group):
-            if i.last_name == last_name:
-                self.group.remove(i)
+        if self.find_student(last_name):
+            self.group.remove(self.find_student(last_name))
 
     def find_student(self, last_name):
         for i in self.group:
@@ -43,7 +42,7 @@ class Group:
         for i in self.group:
             all_students += f'{i.gender}, {i.age}, {i.first_name}, {i.last_name}, {i.record_book}\n'
 
-        return f'Number:{self.number}\n {all_students} '
+        return f'Number:{self.number}\n{all_students} '
 
 
 st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
